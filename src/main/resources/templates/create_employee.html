@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Allocation Management System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+</head>
+
+<body>
+    <!--complete navbar start -->
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <!-- Brand -->
+        <a class="navbar-brand" href="#">Employee Allocation Management System</a>
+
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/employees}">EAMS</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--complete navbar ends -->
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+                <h1 class="text-center">Save Employee</h1>
+                <div class="card-body">
+                    <form th:action="@{/save/employees}" th:object="${employee}" method="POST">
+                        <div class="form-group">
+                            <label>Employee ID</label>
+                            <input type="number" name="empId" id="" th:field="*{empId}" class="form-control"
+                                placeholder="Enter Employee ID" required /><br>
+                            <label>Name</label>
+                            <input type="text" name="empName" id="" th:field="*{empName}" class="form-control"
+                                placeholder="Enter Employee Name" required /><br>
+                            <label>Active</label>
+                            <div class="form-check form-check-inline ml-3">
+                                <input class="form-check-input" type="radio" name="active" th:field="*{active}"
+                                    id="inlineRadio1" value="Yes" required>
+                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline ml-3">
+                                <input class="form-check-input" type="radio" name="active" th:field="*{active}"
+                                    id="inlineRadio2" value="No" required>
+                                <label class="form-check-label" for="inlineRadio2">No</label>
+                            </div>
+                            <br>
+                            <label>Skills</label>
+                            <div class="form-check form-check-inline ml-4">
+                                <input class="form-check-input" type="checkbox" name="skills" th:field="*{skills}"
+                                    id="inlineCheckbox1" value="JAVA" required>
+                                <label class="form-check-label" for="inlineCheckbox1">JAVA</label>
+                            </div>
+                            <div class="form-check form-check-inline ml-4">
+                                <input class="form-check-input" type="checkbox" name="skills" th:field="*{skills}"
+                                    id="inlineCheckbox2" value="SQL">
+                                <label class="form-check-label" for="inlineCheckbox2">SQL</label>
+                            </div>
+                            <div class="form-check form-check-inline ml-4">
+                                <input class="form-check-input" type="checkbox" name="skills" th:field="*{skills}"
+                                    id="inlineCheckbox3" value="Angular">
+                                <label class="form-check-label" for="inlineCheckbox3">Angular</label>
+                            </div>
+                            <br>
+                            <label>Base Location</label>
+                            <select name="baseLocation" th:field="*{baseLocation}" class="form-control form-control-sm"
+                                required>
+                                <option value="Bangalore">Bangalore</option>
+                                <option value="Chennai">Chennai</option>
+                                <option value="Delhi">Delhi</option>
+                            </select>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">
+                                Submit
+                            </button>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
